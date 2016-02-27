@@ -37,3 +37,10 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
+extension ViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        NSLog("The city \(cities[indexPath.row]) in row \(indexPath.row) was selected")
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+}
+
