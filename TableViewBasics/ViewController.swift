@@ -22,14 +22,14 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cities.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cityCell")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cityCell")
         if cell == nil {
-            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "cityCell")
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cityCell")
         }
         cell!.textLabel?.text = cities[indexPath.row]
         cell!.detailTextLabel?.text = indexPath.row.description
@@ -38,9 +38,9 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         NSLog("The city \(cities[indexPath.row]) in row \(indexPath.row) was selected")
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
